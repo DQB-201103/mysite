@@ -1,31 +1,30 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.urls import reverse  
+import uuid  
 
 # Create your models here.
 class Genre(models.Model):
-    """Model đại diện cho thể loại sách."""
-    name = models.CharField(max_length=200, help_text='Nhập thể loại sách (ví dụ: Khoa học viễn tưởng)')
+    name = models.CharField(max_length=200, help_text=_('Enter a book genre (e.g. Science Fiction)'))
 
     def __str__(self):
-        """Chuỗi đại diện cho đối tượng Model."""
         return self.name
-from django.urls import reverse  # Được sử dụng để tạo URL bằng cách đảo ngược các mẫu URL
+    
 
 class Book(models.Model):
-    """Model đại diện cho một cuốn sách (không phải một bản sao cụ thể của sách)."""
     title = models.CharField(max_length=200)
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    summary = models.TextField(max_length=1000, help_text='Nhập mô tả ngắn gọn về cuốn sách')
-    isbn = models.CharField('ISBN', max_length=13, unique=True, help_text='Số ISBN 13 ký tự')
-    genre = models.ManyToManyField(Genre, help_text='Chọn thể loại cho sách này')
+    summary = models.TextField(max_length=1000, help_text=_('Enter a brief description of the book'))
+    isbn = models.CharField(_('ISBN'), max_length=13, unique=True, help_text=_('13 character ISBN number'))
+    genre = models.ManyToManyField(Genre, help_text=_('Select a genre for this book'))
 
     def __str__(self):
-        """Chuỗi đại diện cho đối tượng Model."""
         return self.title
-
+    
     def get_absolute_url(self):
         """Trả về URL để truy cập bản ghi chi tiết cho sách này."""
         return reverse('book-detail', args=[str(self.id)])
-import uuid  # Cần thiết cho các instance sách duy nhất
+
 
 class BookInstance(models.Model):
     """Model đại diện cho một bản sao cụ thể của một cuốn sách (tức là có thể được mượn từ thư viện)."""
