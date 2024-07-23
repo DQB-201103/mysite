@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  <h1>{% trans "My Borrowed Books" %}</h1>
+
+  {% if bookinstance_list %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>{% trans "Book Title" %}</th>
+          <th>{% trans "Due Back" %}</th>
+          <th>{% trans "Status" %}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for bookinstance in bookinstance_list %}
+          <tr>
+            <td>{{ bookinstance.book.title }}</td>
+            <td>{{ bookinstance.due_back }}</td>
+            <td>
+              {% if bookinstance.status == 'o' %}
+                {{ LOAN_STATUS.o }}
+              {% elif bookinstance.status == 'a' %}
+                {{ LOAN_STATUS.a }}
+              {% else %}
+                {{ bookinstance.status }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>{% trans "You have no borrowed books." %}</p>
+  {% endif %}
+{% endblock %}

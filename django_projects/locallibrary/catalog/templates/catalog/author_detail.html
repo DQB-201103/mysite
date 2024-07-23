@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  <h1>{% trans "Author:" %} {{ author.first_name }} {{ author.last_name }}</h1>
+  <p><strong>{% trans "Date of birth:" %}</strong> {{ author.date_of_birth }}</p>
+  <p><strong>{% trans "Date of death:" %}</strong> {{ author.date_of_death }}</p>
+  <h2>{% trans "Books" %}</h2>
+  <ul>
+    {% for book in author.book_set.all %}
+      <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'catalog:author-update' author.pk %}" class="btn btn-primary">{% trans "Edit" %}</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  <h1>All Borrowed Books</h1>
+
+  {% if bookinstance_list %}
+    <ul>
+      {% for bookinstance in bookinstance_list %}
+        <li>
+          <a href="{% url 'book-detail' bookinstance.book.pk %}">{{ bookinstance.book.title }}</a>
+          ({{ bookinstance.due_back }}) - {{ bookinstance.borrower }}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if bookinstance_list.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ bookinstance_list.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ bookinstance_list.number }} of {{ bookinstance_list.paginator.num_pages }}.
+        </span>
+
+        {% if bookinstance_list.has_next %}
+          <a href="?page={{ bookinstance_list.next_page_number }}">next</a>
+          <a href="?page={{ bookinstance_list.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+      </span>
+    </div>
+  {% else %}
+    <p>No borrowed books.</p>
+  {% endif %}
+{% endblock %}

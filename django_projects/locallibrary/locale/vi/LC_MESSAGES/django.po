@@ -59,7 +59,7 @@ msgid "Reserved"
 msgstr "Đã đặt trước"
 
 #: catalog/models.py:36
-msgid "ID duy nhất cho bản sách cụ thể này trong toàn bộ thư viện"
+msgid "Unique ID for this particular book across whole library"
 msgstr "ID duy nhất cho bản sách cụ thể này trong toàn bộ thư viện"
 
 #: catalog/models.py:57

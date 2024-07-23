@@ -1,5 +1,3 @@
-# locallibrary/urls.py
-
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
@@ -13,8 +11,9 @@ urlpatterns = [
     path('catalog/', include('catalog.urls')),
     path('', RedirectView.as_view(url='catalog/')),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += i18n_patterns(
-    path('/catalog', include('catalog.urls')),  # Ensure catalog URLs are included here
+    path('catalog/', include('catalog.urls')),  # Ensure catalog URLs are included here
 )
