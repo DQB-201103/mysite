@@ -1,0 +1,83 @@
+/* styles.css */
+
+/* Định dạng cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Định dạng cho tiêu đề */
+h1, h2, h3, h4, h5, h6 {
+    color: #333;
+}
+
+/* Định dạng cho liên kết */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Định dạng cho sidebar */
+.sidebar-nav {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    margin: 5px 0;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px;
+    background-color: #eaeaea;
+    border-radius: 5px;
+}
+
+.sidebar-nav a:hover {
+    background-color: #d4d4d4;
+}
+
+/* Định dạng cho bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Định dạng cho pagination */
+.pagination {
+    text-align: center;
+}
+
+.page-links a {
+    margin: 0 5px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.page-links a:hover {
+    background-color: #f0f0f0;
+}
