@@ -12,7 +12,7 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -37,6 +37,34 @@ msgstr "Số ISBN 13 ký tự"
 #: catalog/models.py:19
 msgid "Select a genre for this book"
 msgstr "Chọn thể loại cho sách này"
+
+#: catalog/models.py:27
+msgid "Book availability"
+msgstr "Tình trạng sách"
+
+#: catalog/models.py:28
+msgid "Maintenance"
+msgstr "Bảo trì"
+
+#: catalog/models.py:29
+msgid "On loan"
+msgstr "Đang cho mượn"
+
+#: catalog/models.py:30
+msgid "Available"
+msgstr "Có sẵn"
+
+#: catalog/models.py:31
+msgid "Reserved"
+msgstr "Đã đặt trước"
+
+#: catalog/models.py:36
+msgid "ID duy nhất cho bản sách cụ thể này trong toàn bộ thư viện"
+msgstr "ID duy nhất cho bản sách cụ thể này trong toàn bộ thư viện"
+
+#: catalog/models.py:57
+msgid "Died"
+msgstr "Mất"
 
 #: locallibrary/settings.py:118
 msgid "English"
