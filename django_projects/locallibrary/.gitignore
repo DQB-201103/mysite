@@ -21,3 +21,4 @@ demo.py
 *.nib
 *.sw?
 *.DS_Store
+myenv/
