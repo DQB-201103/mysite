@@ -1,0 +1,53 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% block content %}
+  <h1>{% trans "Author List" %}</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>{% trans "First Name" %}</th>
+        <th>{% trans "Last Name" %}</th>
+        <th>{% trans "Date of Birth" %}</th>
+        <th>{% trans "Date of Death" %}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for author in author_list %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td><a href="{% url 'catalog:author-detail' author.id %}">{{ author.first_name }}</a></td>
+          <td><a href="{% url 'catalog:author-detail' author.id %}">{{ author.last_name }}</a></td>
+          <td>{{ author.date_of_birth }}</td>
+          <td>{{ author.date_of_death }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">{% trans "No authors available." %}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <span class="step-links">
+        {% if author_list.has_previous %}
+            <a href="?page=1">&laquo; {% trans "first" %}</a>
+            <a href="?page={{ author_list.previous_page_number }}">{% trans "previous" %}</a>
+        {% endif %}
+
+        <span class="current">
+            {% trans "Page" %} {{ author_list.number }} {% trans "of" %} {{ author_list.paginator.num_pages }}.
+        </span>
+
+        {% if author_list.has_next %}
+            <a href="?page={{ author_list.next_page_number }}">{% trans "next" %}</a>
+            <a href="?page={{ author_list.paginator.num_pages }}">{% trans "last" %} &raquo;</a>
+        {% endif %}
+    </span>
+  </div>
+
+  <div>
+    <p>{{ some_data }}</p>
+  </div>
+{% endblock %}
